@@ -1,0 +1,44 @@
+[
+    {
+        "id": "math_001",
+        "task": "qa",
+        "input": "What is 2+2?",
+        "reference": "4",
+        "evaluation": "qa"
+    },
+    {
+        "id": "capital_001",
+        "task": "qa",
+        "input": "Capital of France?",
+        "reference": "Paris",
+        "evaluation": "qa"
+    },
+    {
+        "id": "planet_001",
+        "task": "qa",
+        "input": "Which planet is known as the Red Planet?",
+        "reference": "Mars",
+        "evaluation": "qa"
+    },
+    {
+        "id": "water_001",
+        "task": "qa",
+        "input": "What is the chemical formula of water?",
+        "reference": "H2O",
+        "evaluation": "qa"
+    },
+    {
+        "id": "python_001",
+        "task": "qa",
+        "input": "Who created Python?",
+        "reference": "Guido van Rossum",
+        "evaluation": "qa"
+    },
+    {
+        "id": "summary_001",
+        "task": "summarization",
+        "input": "Summarize: Python is a high-level programming language created by Guido van Rossum in 1991.",
+        "reference": "Python is a programming language created by Guido van Rossum.",
+        "evaluation": "llm_judge"
+    }
+]

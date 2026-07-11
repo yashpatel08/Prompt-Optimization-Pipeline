@@ -1,0 +1,478 @@
+[
+  {
+    "model": "Qwen 3 4B",
+    "created_at": "2026-07-10T15:46:55.440877",
+    "prompt": {
+      "id": "baseline",
+      "name": "Baseline",
+      "version": 1
+    },
+    "dataset": "qa",
+    "metrics": {
+      "accuracy": 1.0,
+      "passed": 6,
+      "failed": 0,
+      "avg_latency_ms": 43554.02656666667,
+      "min_latency_ms": 23791.1703,
+      "max_latency_ms": 79592.6003,
+      "avg_prompt_tokens": 36.5,
+      "avg_completion_tokens": 224.5,
+      "avg_total_tokens": 261.0
+    },
+    "results": [
+      {
+        "test_case": {
+          "id": "math_001",
+          "task": "qa",
+          "input": "What is 2+2?",
+          "reference": "4",
+          "evaluation": "qa"
+        },
+        "prompt_id": "baseline",
+        "model": "qwen3:4b",
+        "output": "4",
+        "score": 1.0,
+        "latency_ms": 79592.6003,
+        "prompt_tokens": 34,
+        "completion_tokens": 400
+      },
+      {
+        "test_case": {
+          "id": "capital_001",
+          "task": "qa",
+          "input": "Capital of France?",
+          "reference": "Paris",
+          "evaluation": "qa"
+        },
+        "prompt_id": "baseline",
+        "model": "qwen3:4b",
+        "output": "paris",
+        "score": 1.0,
+        "latency_ms": 23791.1703,
+        "prompt_tokens": 31,
+        "completion_tokens": 127
+      },
+      {
+        "test_case": {
+          "id": "planet_001",
+          "task": "qa",
+          "input": "Which planet is known as the Red Planet?",
+          "reference": "Mars",
+          "evaluation": "qa"
+        },
+        "prompt_id": "baseline",
+        "model": "qwen3:4b",
+        "output": "mars",
+        "score": 1.0,
+        "latency_ms": 29874.2593,
+        "prompt_tokens": 36,
+        "completion_tokens": 143
+      },
+      {
+        "test_case": {
+          "id": "water_001",
+          "task": "qa",
+          "input": "What is the chemical formula of water?",
+          "reference": "H2O",
+          "evaluation": "qa"
+        },
+        "prompt_id": "baseline",
+        "model": "qwen3:4b",
+        "output": "h2o (water",
+        "score": 1.0,
+        "latency_ms": 31016.8006,
+        "prompt_tokens": 35,
+        "completion_tokens": 163
+      },
+      {
+        "test_case": {
+          "id": "python_001",
+          "task": "qa",
+          "input": "Who created Python?",
+          "reference": "Guido van Rossum",
+          "evaluation": "qa"
+        },
+        "prompt_id": "baseline",
+        "model": "qwen3:4b",
+        "output": "guido van rossum",
+        "score": 1.0,
+        "latency_ms": 40222.941,
+        "prompt_tokens": 31,
+        "completion_tokens": 231
+      },
+      {
+        "test_case": {
+          "id": "summary_001",
+          "task": "summarization",
+          "input": "Summarize: Python is a high-level programming language created by Guido van Rossum in 1991.",
+          "reference": "Python is a programming language created by Guido van Rossum.",
+          "evaluation": "llm_judge"
+        },
+        "prompt_id": "baseline",
+        "model": "qwen3:4b",
+        "output": "python is a high-level programming language created by guido van rossum in 1991. (10 words",
+        "score": 1.0,
+        "latency_ms": 56826.3879,
+        "prompt_tokens": 52,
+        "completion_tokens": 283
+      }
+    ]
+  },
+  {
+    "model": "Qwen 3 4B",
+    "created_at": "2026-07-10T15:46:55.440877",
+    "prompt": {
+      "id": "concise",
+      "name": "Concise",
+      "version": 2
+    },
+    "dataset": "qa",
+    "metrics": {
+      "accuracy": 1.0,
+      "passed": 6,
+      "failed": 0,
+      "avg_latency_ms": 101745.09495,
+      "min_latency_ms": 33789.9186,
+      "max_latency_ms": 289017.987,
+      "avg_prompt_tokens": 34.5,
+      "avg_completion_tokens": 429.3333333333333,
+      "avg_total_tokens": 463.8333333333333
+    },
+    "results": [
+      {
+        "test_case": {
+          "id": "math_001",
+          "task": "qa",
+          "input": "What is 2+2?",
+          "reference": "4",
+          "evaluation": "qa"
+        },
+        "prompt_id": "concise",
+        "model": "qwen3:4b",
+        "output": "4",
+        "score": 1.0,
+        "latency_ms": 44801.8057,
+        "prompt_tokens": 32,
+        "completion_tokens": 162
+      },
+      {
+        "test_case": {
+          "id": "capital_001",
+          "task": "qa",
+          "input": "Capital of France?",
+          "reference": "Paris",
+          "evaluation": "qa"
+        },
+        "prompt_id": "concise",
+        "model": "qwen3:4b",
+        "output": "paris",
+        "score": 1.0,
+        "latency_ms": 33789.9186,
+        "prompt_tokens": 29,
+        "completion_tokens": 183
+      },
+      {
+        "test_case": {
+          "id": "planet_001",
+          "task": "qa",
+          "input": "Which planet is known as the Red Planet?",
+          "reference": "Mars",
+          "evaluation": "qa"
+        },
+        "prompt_id": "concise",
+        "model": "qwen3:4b",
+        "output": "mars",
+        "score": 1.0,
+        "latency_ms": 39909.3191,
+        "prompt_tokens": 34,
+        "completion_tokens": 214
+      },
+      {
+        "test_case": {
+          "id": "water_001",
+          "task": "qa",
+          "input": "What is the chemical formula of water?",
+          "reference": "H2O",
+          "evaluation": "qa"
+        },
+        "prompt_id": "concise",
+        "model": "qwen3:4b",
+        "output": "water is h2o",
+        "score": 1.0,
+        "latency_ms": 289017.987,
+        "prompt_tokens": 33,
+        "completion_tokens": 1198
+      },
+      {
+        "test_case": {
+          "id": "python_001",
+          "task": "qa",
+          "input": "Who created Python?",
+          "reference": "Guido van Rossum",
+          "evaluation": "qa"
+        },
+        "prompt_id": "concise",
+        "model": "qwen3:4b",
+        "output": "guido van rossum",
+        "score": 1.0,
+        "latency_ms": 82071.9987,
+        "prompt_tokens": 29,
+        "completion_tokens": 285
+      },
+      {
+        "test_case": {
+          "id": "summary_001",
+          "task": "summarization",
+          "input": "Summarize: Python is a high-level programming language created by Guido van Rossum in 1991.",
+          "reference": "Python is a programming language created by Guido van Rossum.",
+          "evaluation": "llm_judge"
+        },
+        "prompt_id": "concise",
+        "model": "qwen3:4b",
+        "output": "python created by guido van rossum",
+        "score": 1.0,
+        "latency_ms": 120879.5406,
+        "prompt_tokens": 50,
+        "completion_tokens": 534
+      }
+    ]
+  },
+  {
+    "model": "Gemma 3",
+    "created_at": "2026-07-10T15:46:55.440877",
+    "prompt": {
+      "id": "baseline",
+      "name": "Baseline",
+      "version": 1
+    },
+    "dataset": "qa",
+    "metrics": {
+      "accuracy": 1.0,
+      "passed": 6,
+      "failed": 0,
+      "avg_latency_ms": 14387.793966666666,
+      "min_latency_ms": 5095.5403,
+      "max_latency_ms": 55560.8628,
+      "avg_prompt_tokens": 39.333333333333336,
+      "avg_completion_tokens": 18.166666666666668,
+      "avg_total_tokens": 57.5
+    },
+    "results": [
+      {
+        "test_case": {
+          "id": "math_001",
+          "task": "qa",
+          "input": "What is 2+2?",
+          "reference": "4",
+          "evaluation": "qa"
+        },
+        "prompt_id": "baseline",
+        "model": "gemma3:4b",
+        "output": "that\u2019s simple! 2 + 2 equals 4",
+        "score": 1.0,
+        "latency_ms": 55560.8628,
+        "prompt_tokens": 37,
+        "completion_tokens": 15
+      },
+      {
+        "test_case": {
+          "id": "capital_001",
+          "task": "qa",
+          "input": "Capital of France?",
+          "reference": "Paris",
+          "evaluation": "qa"
+        },
+        "prompt_id": "baseline",
+        "model": "gemma3:4b",
+        "output": "paris is the capital city of france, known for its iconic landmarks",
+        "score": 1.0,
+        "latency_ms": 6201.8883,
+        "prompt_tokens": 34,
+        "completion_tokens": 15
+      },
+      {
+        "test_case": {
+          "id": "planet_001",
+          "task": "qa",
+          "input": "Which planet is known as the Red Planet?",
+          "reference": "Mars",
+          "evaluation": "qa"
+        },
+        "prompt_id": "baseline",
+        "model": "gemma3:4b",
+        "output": "mars is famously known as the red planet due to its rusty surface",
+        "score": 1.0,
+        "latency_ms": 5095.5403,
+        "prompt_tokens": 39,
+        "completion_tokens": 15
+      },
+      {
+        "test_case": {
+          "id": "water_001",
+          "task": "qa",
+          "input": "What is the chemical formula of water?",
+          "reference": "H2O",
+          "evaluation": "qa"
+        },
+        "prompt_id": "baseline",
+        "model": "gemma3:4b",
+        "output": "it\u2019s h2o \u2013 two hydrogen atoms and one oxygen atom",
+        "score": 1.0,
+        "latency_ms": 5146.8641,
+        "prompt_tokens": 38,
+        "completion_tokens": 16
+      },
+      {
+        "test_case": {
+          "id": "python_001",
+          "task": "qa",
+          "input": "Who created Python?",
+          "reference": "Guido van Rossum",
+          "evaluation": "qa"
+        },
+        "prompt_id": "baseline",
+        "model": "gemma3:4b",
+        "output": "guido van rossum developed python in the late 1980s at cwi",
+        "score": 1.0,
+        "latency_ms": 7295.485,
+        "prompt_tokens": 34,
+        "completion_tokens": 21
+      },
+      {
+        "test_case": {
+          "id": "summary_001",
+          "task": "summarization",
+          "input": "Summarize: Python is a high-level programming language created by Guido van Rossum in 1991.",
+          "reference": "Python is a programming language created by Guido van Rossum.",
+          "evaluation": "llm_judge"
+        },
+        "prompt_id": "baseline",
+        "model": "gemma3:4b",
+        "output": "python, developed in 1991 by guido van rossum, is a versatile and popular high-level programming language",
+        "score": 1.0,
+        "latency_ms": 7026.1233,
+        "prompt_tokens": 54,
+        "completion_tokens": 27
+      }
+    ]
+  },
+  {
+    "model": "Gemma 3",
+    "created_at": "2026-07-10T15:46:55.440877",
+    "prompt": {
+      "id": "concise",
+      "name": "Concise",
+      "version": 2
+    },
+    "dataset": "qa",
+    "metrics": {
+      "accuracy": 0.8333333333333334,
+      "passed": 5,
+      "failed": 1,
+      "avg_latency_ms": 13734.21585,
+      "min_latency_ms": 3880.6226,
+      "max_latency_ms": 61023.8114,
+      "avg_prompt_tokens": 37.333333333333336,
+      "avg_completion_tokens": 7.666666666666667,
+      "avg_total_tokens": 45.0
+    },
+    "results": [
+      {
+        "test_case": {
+          "id": "math_001",
+          "task": "qa",
+          "input": "What is 2+2?",
+          "reference": "4",
+          "evaluation": "qa"
+        },
+        "prompt_id": "concise",
+        "model": "gemma3:4b",
+        "output": "four is the answer",
+        "score": 0.0,
+        "latency_ms": 61023.8114,
+        "prompt_tokens": 35,
+        "completion_tokens": 6
+      },
+      {
+        "test_case": {
+          "id": "capital_001",
+          "task": "qa",
+          "input": "Capital of France?",
+          "reference": "Paris",
+          "evaluation": "qa"
+        },
+        "prompt_id": "concise",
+        "model": "gemma3:4b",
+        "output": "paris is the capital",
+        "score": 1.0,
+        "latency_ms": 4503.4818,
+        "prompt_tokens": 32,
+        "completion_tokens": 6
+      },
+      {
+        "test_case": {
+          "id": "planet_001",
+          "task": "qa",
+          "input": "Which planet is known as the Red Planet?",
+          "reference": "Mars",
+          "evaluation": "qa"
+        },
+        "prompt_id": "concise",
+        "model": "gemma3:4b",
+        "output": "mars is the red planet",
+        "score": 1.0,
+        "latency_ms": 3983.5202,
+        "prompt_tokens": 37,
+        "completion_tokens": 7
+      },
+      {
+        "test_case": {
+          "id": "water_001",
+          "task": "qa",
+          "input": "What is the chemical formula of water?",
+          "reference": "H2O",
+          "evaluation": "qa"
+        },
+        "prompt_id": "concise",
+        "model": "gemma3:4b",
+        "output": "h2o, the simplest form",
+        "score": 1.0,
+        "latency_ms": 3880.6226,
+        "prompt_tokens": 36,
+        "completion_tokens": 9
+      },
+      {
+        "test_case": {
+          "id": "python_001",
+          "task": "qa",
+          "input": "Who created Python?",
+          "reference": "Guido van Rossum",
+          "evaluation": "qa"
+        },
+        "prompt_id": "concise",
+        "model": "gemma3:4b",
+        "output": "guido van rossum developed python",
+        "score": 1.0,
+        "latency_ms": 4972.8615,
+        "prompt_tokens": 32,
+        "completion_tokens": 9
+      },
+      {
+        "test_case": {
+          "id": "summary_001",
+          "task": "summarization",
+          "input": "Summarize: Python is a high-level programming language created by Guido van Rossum in 1991.",
+          "reference": "Python is a programming language created by Guido van Rossum.",
+          "evaluation": "llm_judge"
+        },
+        "prompt_id": "concise",
+        "model": "gemma3:4b",
+        "output": "python: versatile, modern programming language",
+        "score": 1.0,
+        "latency_ms": 4040.9976,
+        "prompt_tokens": 52,
+        "completion_tokens": 9
+      }
+    ]
+  }
+]

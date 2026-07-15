@@ -1,5 +1,6 @@
+import json
+from pathlib import Path
 from app.models.comparison import Comparison
-
 
 class ComparisonReporter:
 
@@ -66,3 +67,78 @@ class ComparisonReporter:
         )
 
         print("=" * 75)
+
+        print()
+
+
+        print("Per Test Case Comparison")
+        print("-" * 75)
+
+        for test_case in comparison.test_cases:
+
+            left = test_case.left
+            right = test_case.right
+
+            print(f"{left.test_case.id}")
+            print(f"Expected : {left.test_case.reference}")
+            print(f"Left     : {left.output}")
+            print(f"Right    : {right.output}")
+            print(f"Scores   : {left.score} -> {right.score}")
+            print(
+                f"Latency  : "
+                f"{left.latency_ms:.0f} ms -> "
+                f"{right.latency_ms:.0f} ms"
+            )
+            print(f"Winner   : {test_case.winner}")
+            print("-" * 75)
+
+        print("-" * 75)
+    
+    def save(
+        self,
+        comparisons: list[Comparison],
+        filename: str,
+    ):
+        data = []
+
+        for comparison in comparisons:
+            data.append(
+                {
+                    "left": {
+                        "experiment_id": comparison.left.id,
+                        "model": comparison.left.model.name,
+                        "prompt": comparison.left.prompt.name,
+                    },
+                    "right": {
+                        "experiment_id": comparison.right.id,
+                        "model": comparison.right.model.name,
+                        "prompt": comparison.right.prompt.name,
+                    },
+                    "summary": {
+                        "accuracy_diff": comparison.accuracy_diff,
+                        "passed_diff": comparison.passed_diff,
+                        "latency_diff_ms": comparison.latency_diff,
+                        "token_diff": comparison.token_diff,
+                    },
+                    "test_cases": [
+                        {
+                            "id": tc.left.test_case.id,
+                            "left_output": tc.left.output,
+                            "right_output": tc.right.output,
+                            "left_score": tc.left.score,
+                            "right_score": tc.right.score,
+                            "winner": tc.winner,
+                            "left_latency_ms": tc.left.latency_ms,
+                            "right_latency_ms": tc.right.latency_ms,
+                        }
+                        for tc in comparison.test_cases
+                    ],
+                }
+            )
+
+        Path(filename).parent.mkdir(parents=True, exist_ok=True)
+
+        with open(filename, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=2)
+
+        print(f"Saved comparisons to {filename}")

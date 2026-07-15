@@ -10,4 +10,8 @@ class ContainsEvaluator(BaseEvaluator):
         output: str,
     ) -> float:
 
-        return 1.0 if test_case.reference in output else 0.0
+        reference = test_case.reference.lower()
+
+        candidate = output.lower()
+
+        return 1.0 if reference in candidate else 0.0

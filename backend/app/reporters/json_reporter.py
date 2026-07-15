@@ -16,12 +16,29 @@ class JsonReporter:
         for experiment in experiments:
             data.append(
                 {
+                    "id": experiment.id,
+                    "created_at": created_at,
+                    "started_at": (
+                        experiment.started_at.isoformat()
+                        if experiment.started_at
+                        else None
+                    ),
+                    "finished_at": (
+                        experiment.finished_at.isoformat()
+                        if experiment.finished_at
+                        else None
+                    ),
+                    "duration_seconds": experiment.duration,
                     "model": experiment.model.name,
                     "created_at": created_at,
                     "prompt": {
                         "id": experiment.prompt.id,
                         "name": experiment.prompt.name,
                         "version": experiment.prompt.version,
+                        "author": experiment.prompt.author,
+                        "description": experiment.prompt.description,
+                        "tags": experiment.prompt.tags,
+                        "created_at": experiment.prompt.created_at.isoformat(),
                     },
                     "dataset": experiment.dataset.name,
                     "metrics": {
@@ -47,6 +64,7 @@ class JsonReporter:
                             "prompt_id": result.prompt_id,
                             "model": result.model,
                             "output": result.output,
+                            "reasoning": result.reasoning,
                             "score": result.score,
                             "latency_ms": result.latency_ms,
                             "prompt_tokens": result.prompt_tokens,

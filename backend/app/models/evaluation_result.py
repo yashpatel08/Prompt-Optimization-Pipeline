@@ -14,3 +14,4 @@ class EvaluationResult:
 
     prompt_tokens: int
     completion_tokens: int
+    reasoning: str | None = None

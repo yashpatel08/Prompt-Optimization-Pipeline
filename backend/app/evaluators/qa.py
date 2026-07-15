@@ -1,6 +1,7 @@
 from app.evaluators.base import BaseEvaluator
 from app.models.test_case import TestCase
 
+
 class QAEvaluator(BaseEvaluator):
 
     def evaluate(
@@ -10,15 +11,14 @@ class QAEvaluator(BaseEvaluator):
     ) -> float:
 
         reference = test_case.reference.strip().lower()
-        output = output.strip().lower()
+        candidate = output.strip().lower()
 
-        if reference == output:
-            return 1.0
-
-        if reference in output:
-            return 1.0
-
-        if output in reference:
-            return 1.0
-
-        return 0.0
+        return (
+            1.0
+            if (
+                reference == candidate
+                or reference in candidate
+                or candidate in reference
+            )
+            else 0.0
+        )

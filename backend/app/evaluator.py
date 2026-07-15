@@ -19,9 +19,6 @@ def evaluate(
     output: str,
 ) -> float:
 
-    normalized_reference = test_case.reference.strip().lower()
-    normalized_output = output.strip().lower()
-
     evaluator = EVALUATORS.get(test_case.evaluation)
 
     if evaluator is None:
@@ -29,5 +26,5 @@ def evaluate(
 
     return evaluator.evaluate(
         test_case,
-        normalized_output,
+        output,
     )

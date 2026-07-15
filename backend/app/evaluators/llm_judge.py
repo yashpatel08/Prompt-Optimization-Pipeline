@@ -1,13 +1,14 @@
 from ollama import chat
 
 from app.evaluators.base import BaseEvaluator
+from app.models.test_case import TestCase
 
 
 class LLMJudgeEvaluator(BaseEvaluator):
 
     def evaluate(
         self,
-        reference: str,
+        test_case: TestCase,
         output: str,
     ) -> float:
 
@@ -41,7 +42,7 @@ or
                     "role": "user",
                     "content": f"""
 Reference:
-{reference}
+{test_case.reference}
 
 Candidate:
 {output}

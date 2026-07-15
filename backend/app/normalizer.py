@@ -18,14 +18,23 @@ def normalize(text: str) -> str:
     Clean model output before evaluation.
     """
 
-    text = remove_thinking(text)
     text = normalize_unicode(text)
+    text = remove_thinking(text)
     text = remove_markdown(text)
     text = normalize_whitespace(text)
     text = normalize_punctuation(text)
     text = normalize_case(text)
-
     return text
+
+def split_reasoning(text: str):
+
+    if "</think>" in text:
+        reasoning, answer = text.split("</think>", 1)
+        reasoning = reasoning.replace("<think>", "").strip()
+        answer = answer.strip()
+        return reasoning, answer
+
+    return "", text.strip()
 
 def normalize_unicode(text: str) -> str:
     text = text.translate(SUBSCRIPT_MAP)

@@ -2,11 +2,14 @@ import time
 from app.models.prompt import Prompt
 from app.models.experiment import Experiment
 from app.llm import ask
-from app.normalizer import normalize
+from app.normalizer import normalize, split_reasoning
 from app.evaluator import evaluate
 from app.models.evaluation_result import EvaluationResult
 from app.models.dataset import Dataset
 from app.models.model import Model
+from pprint import pprint
+from datetime import datetime
+
 
 class ExperimentRunner:
 
@@ -24,23 +27,28 @@ class ExperimentRunner:
         # Create a list to store all experiments
         experiments = []
         for model in self.models:
-            
+
             # Loop through each prompt
             for prompt in self.prompts:
-
+                experiment_started_at = datetime.now()
                 # Create a fresh list of results for this prompt
                 results = []
 
                 # Run every test case
                 for test_case in self.dataset.test_cases:
+
                     # Ask the LLM
                     response = ask(
                         test_case.input,
                         prompt,
                         model.id,
                     )
+
+                    reasoning, answer = split_reasoning(response.message.content)
+
+                    pprint(answer)
                     # Normalize the output
-                    clean_output = normalize(response.message.content)
+                    clean_output = normalize(answer)
 
                     # Evaluate the output
                     score = evaluate(
@@ -54,6 +62,7 @@ class ExperimentRunner:
                         prompt_id=prompt.id,
                         model=response.model,
                         output=clean_output,
+                        reasoning=reasoning,
                         score=score,
                         latency_ms=response.total_duration / 1_000_000,
                         prompt_tokens=response.prompt_eval_count,
@@ -63,12 +72,16 @@ class ExperimentRunner:
                     # Store the result
                     results.append(result)
 
+                experiment_finished_at = datetime.now()
+
                 # Create an Experiment for this prompt
                 experiment = Experiment(
                     model=model,
                     prompt=prompt,
                     dataset=self.dataset,
                     results=results,
+                    started_at=experiment_started_at,
+                    finished_at=experiment_finished_at,
                 )
 
                 # Store the experiment

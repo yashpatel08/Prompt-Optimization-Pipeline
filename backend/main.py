@@ -7,6 +7,13 @@ from app.model_registry import models
 from app.reporters.json_reporter import JsonReporter
 from app.reporters.comparison_reporter import ComparisonReporter
 from app.comparators.experiment_comparator import ExperimentComparator
+from app.leaderboard import LeaderboardBuilder
+from app.reporters.leaderboard_reporter import LeaderboardReporter
+from app.analyzers.failure_analyzer import FailureAnalyzer
+from app.reporters.failure_reporter import FailureReporter
+from app.models.run import Run
+from app.storage.run_repository import RunRepository
+from app.run_manager import RunManager
 
 loader = DatasetLoader()
 
@@ -16,20 +23,57 @@ runner = ExperimentRunner(prompts=prompts, dataset=dataset, models=models)
 
 
 def main():
-    runner = ExperimentRunner(prompts=prompts, dataset=dataset, models=models)
     experiments = runner.run()
 
+    run_manager = RunManager()
+
     ConsoleReporter().display(experiments, verbose=False)
-    JsonReporter().save(experiments, "reports/results.json")
+
+    JsonReporter().save(
+        experiments,
+        run_manager.path("experiments.json"),
+    )
+
+    run = Run(experiments)
+    RunRepository().save(run)
+
+    leaderboard = LeaderboardBuilder().build(experiments)
+
+    LeaderboardReporter().save(
+        leaderboard,
+        run_manager.path("leaderboard.json"),
+    )
+
     comparator = ExperimentComparator()
 
+    comparisons = []
+
     for i in range(0, len(experiments), 2):
-        comparison = comparator.compare(
-            experiments[i],
-            experiments[i + 1],
+        comparisons.append(
+            comparator.compare(
+                experiments[i],
+                experiments[i + 1],
+            )
         )
 
-        ComparisonReporter().display(comparison)
+    ComparisonReporter().save(
+        comparisons,
+        run_manager.path("comparisons.json"),
+    )
+
+    failure_reports = []
+
+    for experiment in experiments:
+        report = FailureAnalyzer().analyze(experiment)
+
+        failure_reports.append(
+            (experiment, report)
+        )
+
+    FailureReporter().save(
+        failure_reports,
+        run_manager.path("failures.json"),
+    )
 
 
 if __name__ == "__main__":

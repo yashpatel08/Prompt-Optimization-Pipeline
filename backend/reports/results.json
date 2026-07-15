@@ -1,23 +1,35 @@
 [
   {
+    "id": "ca4b722b-9660-4498-b078-79f3150873a3",
+    "created_at": "2026-07-14T16:30:21.009658",
+    "started_at": "2026-07-14T21:38:33.336158",
+    "finished_at": "2026-07-14T21:43:22.119539",
+    "duration_seconds": 288.783381,
     "model": "Qwen 3 4B",
-    "created_at": "2026-07-10T15:46:55.440877",
     "prompt": {
       "id": "baseline",
       "name": "Baseline",
-      "version": 1
+      "version": 1,
+      "author": "Yash",
+      "description": "Simple baseline prompt with minimal instructions.",
+      "tags": [
+        "baseline",
+        "general",
+        "qa"
+      ],
+      "created_at": "2026-07-14T16:08:33.260465"
     },
     "dataset": "qa",
     "metrics": {
       "accuracy": 1.0,
       "passed": 6,
       "failed": 0,
-      "avg_latency_ms": 43554.02656666667,
-      "min_latency_ms": 23791.1703,
-      "max_latency_ms": 79592.6003,
+      "avg_latency_ms": 43187.06468333333,
+      "min_latency_ms": 18538.1166,
+      "max_latency_ms": 64934.1476,
       "avg_prompt_tokens": 36.5,
-      "avg_completion_tokens": 224.5,
-      "avg_total_tokens": 261.0
+      "avg_completion_tokens": 207.33333333333334,
+      "avg_total_tokens": 243.83333333333334
     },
     "results": [
       {
@@ -30,11 +42,12 @@
         },
         "prompt_id": "baseline",
         "model": "qwen3:4b",
-        "output": "4",
+        "output": "2 + 2 = 4",
+        "reasoning": "Hmm, the user asked \"What is 2+2?\" in a very simple math question. \n\nThis seems like a basic arithmetic problem. The answer is straightforward: 2 plus 2 equals 4. \n\nI need to keep it under 20 words as per the instruction. The response should be direct and minimal. \n\nThe user might be testing if I understand simple math, or just being playful. Either way, I'll give the clear answer without extra fluff. \n\nCounting the words: \"2 + 2 = 4\" is 4 words. Perfectly within limit. \n\nNo need for explanations or context here - the question is so simple. Just the equation answer.",
         "score": 1.0,
-        "latency_ms": 79592.6003,
+        "latency_ms": 35567.0391,
         "prompt_tokens": 34,
-        "completion_tokens": 400
+        "completion_tokens": 153
       },
       {
         "test_case": {
@@ -47,10 +60,11 @@
         "prompt_id": "baseline",
         "model": "qwen3:4b",
         "output": "paris",
+        "reasoning": "Hmm, the user is asking \"Capital of France?\" which is a straightforward geography question. \n\nI recall that Paris is the capital city of France. This is basic knowledge that I've learned from reliable sources. \n\nThe user wants the answer in maximum 20 words, so I'll keep it concise. Just \"Paris\" fits perfectly within that limit while being accurate. \n\nNo need to add extra information since they specifically asked for the capital name only. \n\nI'll respond with just \"Paris\" to stay within the word count constraint.",
         "score": 1.0,
-        "latency_ms": 23791.1703,
+        "latency_ms": 18538.1166,
         "prompt_tokens": 31,
-        "completion_tokens": 127
+        "completion_tokens": 113
       },
       {
         "test_case": {
@@ -62,11 +76,12 @@
         },
         "prompt_id": "baseline",
         "model": "qwen3:4b",
-        "output": "mars",
+        "output": "mars is known as the red planet",
+        "reasoning": "Hmm, the user is asking which planet is known as the Red Planet. This is a straightforward astronomy question that I've learned about. \n\nThe Red Planet refers to Mars because of its reddish appearance due to iron oxide dust on its surface. I recall this from basic science knowledge. \n\nThe user specified a maximum of 20 words, so I need to be concise. Just stating \"Mars\" would be perfect - it's exactly one word and fits within the limit. \n\nI wonder if they're a student doing homework or just curious about space. Either way, keeping it simple and accurate is best. No need for extra details since they want brevity. \n\nOkay, response confirmed: \"Mars\" is the answer and it's under 20 words.",
         "score": 1.0,
-        "latency_ms": 29874.2593,
+        "latency_ms": 34394.2165,
         "prompt_tokens": 36,
-        "completion_tokens": 143
+        "completion_tokens": 170
       },
       {
         "test_case": {
@@ -78,9 +93,10 @@
         },
         "prompt_id": "baseline",
         "model": "qwen3:4b",
-        "output": "h2o (water",
+        "output": "h2o (hydrogen and oxygen",
+        "reasoning": "Hmm, the user is asking for the chemical formula of water. That's a very basic chemistry question. \n\nI recall that water is H\u2082O - two hydrogen atoms bonded to one oxygen atom. \n\nThis is one of the most fundamental chemical formulas taught in schools. The user might be a student doing homework, or just someone curious about science. \n\nSince they specified \"maximum 20 words\", I'll keep it super concise: just \"H\u2082O\" plus one word explanation. \n\nBetter double-check - yep, definitely H\u2082O. No need for extra details since they want it short. \n\nThe answer fits perfectly in 20 words: \"H\u2082O (hydrogen and oxygen)\" is 4 words. Perfect.",
         "score": 1.0,
-        "latency_ms": 31016.8006,
+        "latency_ms": 41143.4146,
         "prompt_tokens": 35,
         "completion_tokens": 163
       },
@@ -95,10 +111,11 @@
         "prompt_id": "baseline",
         "model": "qwen3:4b",
         "output": "guido van rossum",
+        "reasoning": "Hmm, the user is asking who created Python. I need to recall that Python is a programming language, and its creator is Guido van Rossum. I should make sure the answer is accurate and concise.\n\nThe user specified a maximum of 20 words, so I have to be brief. Guido van Rossum is the key name here. I don't need extra details like the year or background to stay within the limit.\n\nAlso, the user might be a student, developer, or someone new to programming, so keeping it simple and direct is best. They probably want a quick answer without confusion.\n\nI'll phrase it as \"Guido van Rossum\" to fit the word count. That's exactly one word? Wait, no\u2014Guido van Rossum is three words. Let me count: Guido (1), van (2), Rossum (3). So it's three words. But the user said \"maximum 2 and 20 words,\" so I need to check.\n\nThe instruction says \"Maximum 20 words,\" so three words is fine. I should write it as \"Guido van Rossum\" without any additional text to keep it tight.\n\nDouble-checking: Yes, Guido van Rossum created Python in the late 1980s. No need for more. This response is straightforward and meets the requirement.",
         "score": 1.0,
-        "latency_ms": 40222.941,
+        "latency_ms": 64545.4537,
         "prompt_tokens": 31,
-        "completion_tokens": 231
+        "completion_tokens": 286
       },
       {
         "test_case": {
@@ -110,33 +127,46 @@
         },
         "prompt_id": "baseline",
         "model": "qwen3:4b",
-        "output": "python is a high-level programming language created by guido van rossum in 1991. (10 words",
+        "output": "python, created by guido van rossum in 1991, is a high-level programming language. (9 words",
+        "reasoning": "Hmm, the user wants me to summarize a specific sentence about Python. They've given me the exact sentence: \"Python is a high-level programming language created by Guido van Rossum in 1.991.\" Wait, that says \"1991\" but it's written as \"1.991\" - that's probably a typo for 1991.\n\nThe user specified a maximum of 20 words for my response. I need to be concise while capturing the key points: Python is a high-level programming language, created by Guido van Rossum, and the year 1991.\n\nLet me count the words in my potential summary: \"Python, created by Guido van Rossum in 1991, is a high-level programming language.\" That's 9 words - well under the 20-word limit. I should make sure it's accurate and flows naturally.\n\nI notice the original sentence has a typo (\"1.991\" instead of \"1991\"), but since this is a summary, I'll correct it to standard 1991 without adding extra words. The user didn't ask for error correction, but it's important for accuracy.\n\nThe summary should be factual and neutral. I'll stick to the core information without adding interpretation. The user seems to want a quick reference, maybe for study or quick recall purposes.\n\nOkay, my response will be: \"Python, created by Guido van Rossum in 1991, is a high-level programming language.\" Exactly 9 words - perfect within the limit.",
         "score": 1.0,
-        "latency_ms": 56826.3879,
+        "latency_ms": 64934.1476,
         "prompt_tokens": 52,
-        "completion_tokens": 283
+        "completion_tokens": 359
       }
     ]
   },
   {
+    "id": "0a78fe74-6175-4fc8-a84b-1186dd8d0a4b",
+    "created_at": "2026-07-14T16:30:21.009658",
+    "started_at": "2026-07-14T21:43:22.123131",
+    "finished_at": "2026-07-14T21:56:46.710615",
+    "duration_seconds": 804.587484,
     "model": "Qwen 3 4B",
-    "created_at": "2026-07-10T15:46:55.440877",
     "prompt": {
       "id": "concise",
       "name": "Concise",
-      "version": 2
+      "version": 2,
+      "author": "Yash",
+      "description": "Strict API-style prompt that minimizes verbosity.",
+      "tags": [
+        "concise",
+        "api",
+        "production"
+      ],
+      "created_at": "2026-07-14T16:08:33.260504"
     },
     "dataset": "qa",
     "metrics": {
       "accuracy": 1.0,
       "passed": 6,
       "failed": 0,
-      "avg_latency_ms": 101745.09495,
-      "min_latency_ms": 33789.9186,
-      "max_latency_ms": 289017.987,
-      "avg_prompt_tokens": 34.5,
-      "avg_completion_tokens": 429.3333333333333,
-      "avg_total_tokens": 463.8333333333333
+      "avg_latency_ms": 129070.09981666665,
+      "min_latency_ms": 13103.6853,
+      "max_latency_ms": 650408.869,
+      "avg_prompt_tokens": 45.5,
+      "avg_completion_tokens": 465.0,
+      "avg_total_tokens": 510.5
     },
     "results": [
       {
@@ -150,10 +180,11 @@
         "prompt_id": "concise",
         "model": "qwen3:4b",
         "output": "4",
+        "reasoning": "Okay, the user asked \"What is 2+2?\" So I need to answer that as an API. Let me think.\n\nFirst, 2 plus 2 is a basic math problem. The answer should be 4. But I have to make sure I don't add any extra text. The instructions say to output only the answer, no explanations, no justifications.\n\nWait, the user specified \"Output only the answer.\" So I shouldn't say anything else. Just the number 4.\n\nLet me check again. The user said \"Never explain. Never justify. Never add additional text.\" So my response has to be exactly \"4\".\n\nYes, that's right. No need to think too much. Just output 4.",
         "score": 1.0,
-        "latency_ms": 44801.8057,
-        "prompt_tokens": 32,
-        "completion_tokens": 162
+        "latency_ms": 47453.8573,
+        "prompt_tokens": 43,
+        "completion_tokens": 154
       },
       {
         "test_case": {
@@ -166,10 +197,11 @@
         "prompt_id": "concise",
         "model": "qwen3:4b",
         "output": "paris",
+        "reasoning": "Hmm, the user is asking for the capital of France. This is a straightforward geography question. \n\nI recall that Paris is the capital city of France. It's one of the most well-known facts in world geography. \n\nThe user specifically instructed to output only the answer without any explanations or additional text. They want a direct response. \n\nI should just output \"Paris\" as the answer. No need for any extra words or context since they emphasized \"never explain\" and \"never justify\". \n\nThis is simple enough - the capital of France is universally recognized as Paris. I'll make sure to respond precisely as requested.",
         "score": 1.0,
-        "latency_ms": 33789.9186,
-        "prompt_tokens": 29,
-        "completion_tokens": 183
+        "latency_ms": 29265.7364,
+        "prompt_tokens": 40,
+        "completion_tokens": 129
       },
       {
         "test_case": {
@@ -182,10 +214,11 @@
         "prompt_id": "concise",
         "model": "qwen3:4b",
         "output": "mars",
+        "reasoning": "We are given a question: \"Which planet is known as the Red Planet?\"\n We know that Mars is commonly referred to as the Red Planet due to its reddish appearance from the iron oxide (rust) on its surface.\n Therefore, the answer is Mars.\n We must output only the answer without any additional text, explanation, or justification.",
         "score": 1.0,
-        "latency_ms": 39909.3191,
-        "prompt_tokens": 34,
-        "completion_tokens": 214
+        "latency_ms": 18287.4819,
+        "prompt_tokens": 45,
+        "completion_tokens": 73
       },
       {
         "test_case": {
@@ -197,11 +230,12 @@
         },
         "prompt_id": "concise",
         "model": "qwen3:4b",
-        "output": "water is h2o",
+        "output": "h2o",
+        "reasoning": "We are given a simple question: \"What is the chemical formula of water?\"\n The chemical formula for water is H2O.\n Since the instruction says: \"Output only the answer. Never explain. Never justify. Never add additional text.\"\n We must output only \"H2O\"",
         "score": 1.0,
-        "latency_ms": 289017.987,
-        "prompt_tokens": 33,
-        "completion_tokens": 1198
+        "latency_ms": 15900.969,
+        "prompt_tokens": 44,
+        "completion_tokens": 63
       },
       {
         "test_case": {
@@ -214,10 +248,11 @@
         "prompt_id": "concise",
         "model": "qwen3:4b",
         "output": "guido van rossum",
+        "reasoning": "We are given a question: \"Who created Python?\"\n We are to output only the answer without any explanation, justification, or additional text.\n\n The answer to this question is Guido van Rossum.\n\n Therefore, we output: Guido van Rossum",
         "score": 1.0,
-        "latency_ms": 82071.9987,
-        "prompt_tokens": 29,
-        "completion_tokens": 285
+        "latency_ms": 13103.6853,
+        "prompt_tokens": 40,
+        "completion_tokens": 59
       },
       {
         "test_case": {
@@ -229,33 +264,46 @@
         },
         "prompt_id": "concise",
         "model": "qwen3:4b",
-        "output": "python created by guido van rossum",
+        "output": "python is a high-level language created by guido van rossum in 1991",
+        "reasoning": "We are given a sentence: \"Python is a high-level programming language created by Guido van Rossum in 1.991.\"\n But note: the year is written as \"1991\" (not 1.991, which is a typo). However, the instruction says to output only the answer without any explanation, justification, or additional text.\n\n The task is to summarize the given sentence.\n\n The sentence states:\n   - Python is a high-level programming language\n   - Created by Guido van Rossum\n   - In 1991\n\n We are to summarize. Since the original sentence is already concise, we can output a summary that captures the essence.\n\n However, note: the instruction says \"Summarize\", meaning we should make it even shorter? But the original is already very short.\n\n Let me think: the summary should be the same as the original? Or we can make it a bit more concise? But the problem says \"summarize\", so we don't want to add or remove too much.\n\n But the instruction says: \"Output only the answer.\" and \"Never explain\", etc.\n\n Since the original is: \"Python is a high-level programming language created by Guido van Rossum in 1991.\"\n\n We can output a very short version? For example: \"Python, created by Guido van Rossum in 1991, is a high-level programming language.\"\n\n However, the problem says: \"Summarize\". So we can try to make it even shorter.\n\n But note: the problem says \"Output only the answer\". So we must output exactly the summary.\n\n Let's see: the most concise way without losing meaning.\n\n Alternatively, we can output: \"Python is a high-level language created by Guido van Rossum in 1991.\"\n\n But the problem says: the original sentence has a typo? The year is written as \"1991\" (not 1.991). So we correct the typo? \n\n However, the instruction says: \"Never explain\", so we don't want to correct the typo? But the problem says the sentence is: \"Python is a high-level programming language created by Guido van Rossum in 1991.\" (with the year as 1991, not 1.991). \n\n Actually, the user wrote: \"in 1991\" (the typo in the problem statement is that the user wrote \"1.991\" in the problem? But in the problem description, it says: \"created by Guido van Rossum in 1991\". \n\n Let me re-read the user input: \n   \"Summarize: Python is a high-level programming language created by Guido van Rossum in 1991.\"\n\n So the user wrote \"1991\", not \"1.991\". The problem says: \"in 1991\".\n\n Therefore, we can output a summary that is a bit shorter but still accurate.\n\n Example of a summary: \"High-level programming language Python, created by Guido van Rossum in 1991.\"\n\n But the problem says: output only the answer.\n\n I think the expected answer is just the same sentence? But the problem says \"summarize\", so we can make it a bit shorter.\n\n However, the instruction says: \"Never explain\", so we don't have to add anything.\n\n Let me propose: \n   \"Python, a high-level language created by Guido van Rossum in 1991.\"\n\n But note: the original says \"programming language\", so we can say \"language\" to be short.\n\n Alternatively, we can output: \"Created by Guido van Rossum in 1991, Python is a high-level programming language.\"\n\n But the problem says: output only the answer.\n\n I think the most straightforward summary without changing the meaning is to take the sentence and make it a bit more concise by removing redundant words? \n\n However, the problem says: \"Summarize\". So we can output:\n\n   \"Python is a high-level programming language created by Guido van Rossum in 1991.\"\n\n But wait, that's the same as the input. So if we want to summarize, we can say:\n\n   \"Python (created by Guido van Rossum in 1991) is a high-level programming language.\"\n\n But the problem says: output only the answer.\n\n Since the problem is to summarize and the input is already a sentence, I think we can output the same sentence? \n\n However, the instruction says: \"Summarize\", so we are to make it shorter.\n\n Let me look for the most common way: \n\n   \"Python, a high-level programming language created by Guido van Rossum in 1991.\"\n\n But we can remove \"a\" to be more concise? \n\n Alternatively, we can do: \"High-level language Python created by Guido van Rossum in 1991.\"\n\n But that might be a bit awkward.\n\n Given the constraints, I think the best is to output:\n\n   \"Python is a high-level programming language created by Guido van Rossum in 1991.\"\n\n However, the problem says \"summarize\", so we can try to make it one phrase.\n\n But note: the instruction says \"Output only the answer\", so we output exactly the summary.\n\n I decide: the summary is the same as the input because it's already short and clear.\n\n But wait, the problem says: \"Summarize\", so we are to write a shorter version. \n\n How about: \"Python (Guido van Rossum, 1991) - high-level language\"\n\n But that might be too much.\n\n Alternatively, we can output: \"Python: high-level language created by Guido van Rossum in 1991.\"\n\n This is a common way.\n\n However, the problem says: output only the answer.\n\n I think the expected answer in this context is the same sentence? Or we can do:\n\n   \"High-level programming language Python, created by Guido van Rossum in 1991.\"\n\n But let's see: the problem says \"Summarize\", so we are to capture the key points.\n\n I'll go with: \"Python is a high-level programming language created by Guido van Rossum in 1991.\"\n\n But that's the same as input.\n\n Alternatively, to make it shorter: \"Python (Guido van Rossum, 1991): high-level language\"\n\n However, the problem doesn't specify the length.\n\n Since the instruction says: \"Never explain\", I will output a string that is a concise summary.\n\n After thinking, I choose:\n\n   \"Python, a high-level programming language created by Guido van Rossum in 1991.\"\n\n But note: the problem says \"Output only the answer\". So we output that string.\n\n However, the user might expect a very short summary? \n\n Let me check: the most common summary in the field is just the sentence.\n\n I decide to output:\n\n   \"Python is a high-level programming language created by Guido van Rossum in 1991.\"\n\n But wait, the problem says the original has a typo? No, the user wrote \"1991\", so it's correct.\n\n Actually, the problem says: \"created by Guido van Rossum in 1991.\" (with the year 1991).\n\n So I output that string.\n\n However, the problem says: \"Summarize\", so we can make it even shorter? \n\n Example: \"Python: high-level language by Guido van Rossum (1991)\"\n\n But the problem says: output only the answer.\n\n I think the safest is to output the same string as the input? But the problem says \"summarize\", so we are to condense.\n\n Let me write: \n\n   \"Python (created by Guido van Rossum in 1991) is a high-level programming language.\"\n\n But that's a bit longer? \n\n Alternatively, we can do: \n\n   \"High-level programming language Python, created by Guido van Rossum in 1991.\"\n\n I think that's acceptable.\n\n However, the instruction says: \"Never explain\", so I will output:\n\n   \"Python is a high-level programming language created by Guido van Rossum in 1991.\"\n\n But to be a true summary, we can remove \"programming\" because it's redundant? \n\n   \"Python is a high-level language created by Guido van Rossum in 1991.\"\n\n This is shorter by 2 words.\n\n So I choose: \"Python is a high-level language created by Guido van Rossum in 1991.\"\n\n Why? Because \"high-level language\" is a common term and the word \"programming\" is often omitted in such contexts? Actually, in the context of computer science, we say \"high-level language\" meaning a language that is high-level.\n\n But the original says \"high-level programming language\", so we can drop \"programming\" to be shorter? \n\n However, the problem says: summarize. So we can drop the word \"programming\" to make it shorter.\n\n So the summary: \"Python is a high-level language created by Guido van Rossum in 1991.\"\n\n But note: the original says \"programming language\", so if we drop \"programming\", it becomes \"high-level language\", which is still correct? \n\n Yes, because in computer science, when we say \"high-level language\", it implies it's a programming language.\n\n So I think that's a good summary.\n\n Therefore, I output: \"Python is a high-level language created by Guido van Rossum in 1991.\"\n\n However, the problem says: the user's input is: \"Python is a high-level programming language created by Guido van Rossum in 1991.\"\n\n We are to summarize. So we output the above.\n\n But note: the instruction says \"Output only the answer\". So we don't add anything else.\n\n Final answer: \"Python is a high-level language created by Guido van Rossum in 1991.\"\n\n Let me write it without the quotes.\n\n But wait, the problem says: the year is 1991 (correctly).\n\n So output: Python is a high-level language created by Guido van Rossum in 1991.\n\n However, the problem says: \"Never explain\", so we don't add any extra text.\n\n I think that's it.\n\n But note: the problem says \"Summarize\", so if we want to be ultra-short, we can do:\n\n   \"Python: high-level language (Guido van Rossum, 1991)\"\n\n But the problem doesn't specify the style.\n\n Given the constraints, I'll go with the sentence that is a bit shorter than the input.\n\n So: \"Python is a high-level language created by Guido van Rossum in 1991.\"\n\n Let's output that.",
         "score": 1.0,
-        "latency_ms": 120879.5406,
-        "prompt_tokens": 50,
-        "completion_tokens": 534
+        "latency_ms": 650408.869,
+        "prompt_tokens": 61,
+        "completion_tokens": 2312
       }
     ]
   },
   {
+    "id": "d755c734-fcd1-4d30-8183-0068676de42c",
+    "created_at": "2026-07-14T16:30:21.009658",
+    "started_at": "2026-07-14T21:56:46.710963",
+    "finished_at": "2026-07-14T21:58:44.878624",
+    "duration_seconds": 118.167661,
     "model": "Gemma 3",
-    "created_at": "2026-07-10T15:46:55.440877",
     "prompt": {
       "id": "baseline",
       "name": "Baseline",
-      "version": 1
+      "version": 1,
+      "author": "Yash",
+      "description": "Simple baseline prompt with minimal instructions.",
+      "tags": [
+        "baseline",
+        "general",
+        "qa"
+      ],
+      "created_at": "2026-07-14T16:08:33.260465"
     },
     "dataset": "qa",
     "metrics": {
       "accuracy": 1.0,
       "passed": 6,
       "failed": 0,
-      "avg_latency_ms": 14387.793966666666,
-      "min_latency_ms": 5095.5403,
-      "max_latency_ms": 55560.8628,
+      "avg_latency_ms": 15569.729083333334,
+      "min_latency_ms": 5359.786,
+      "max_latency_ms": 56156.2139,
       "avg_prompt_tokens": 39.333333333333336,
-      "avg_completion_tokens": 18.166666666666668,
-      "avg_total_tokens": 57.5
+      "avg_completion_tokens": 18.666666666666668,
+      "avg_total_tokens": 58.0
     },
     "results": [
       {
@@ -269,8 +317,9 @@
         "prompt_id": "baseline",
         "model": "gemma3:4b",
         "output": "that\u2019s simple! 2 + 2 equals 4",
+        "reasoning": "",
         "score": 1.0,
-        "latency_ms": 55560.8628,
+        "latency_ms": 56156.2139,
         "prompt_tokens": 37,
         "completion_tokens": 15
       },
@@ -284,11 +333,12 @@
         },
         "prompt_id": "baseline",
         "model": "gemma3:4b",
-        "output": "paris is the capital city of france, known for its iconic landmarks",
+        "output": "paris is the beautiful and historic capital city of france",
+        "reasoning": "",
         "score": 1.0,
-        "latency_ms": 6201.8883,
+        "latency_ms": 8245.5804,
         "prompt_tokens": 34,
-        "completion_tokens": 15
+        "completion_tokens": 12
       },
       {
         "test_case": {
@@ -300,11 +350,12 @@
         },
         "prompt_id": "baseline",
         "model": "gemma3:4b",
-        "output": "mars is famously known as the red planet due to its rusty surface",
+        "output": "mars is famously called the red planet due to its iron-rich surface",
+        "reasoning": "",
         "score": 1.0,
-        "latency_ms": 5095.5403,
+        "latency_ms": 5359.786,
         "prompt_tokens": 39,
-        "completion_tokens": 15
+        "completion_tokens": 16
       },
       {
         "test_case": {
@@ -317,8 +368,9 @@
         "prompt_id": "baseline",
         "model": "gemma3:4b",
         "output": "it\u2019s h2o \u2013 two hydrogen atoms and one oxygen atom",
+        "reasoning": "",
         "score": 1.0,
-        "latency_ms": 5146.8641,
+        "latency_ms": 5752.4793,
         "prompt_tokens": 38,
         "completion_tokens": 16
       },
@@ -332,11 +384,12 @@
         },
         "prompt_id": "baseline",
         "model": "gemma3:4b",
-        "output": "guido van rossum developed python in the late 1980s at cwi",
+        "output": "guido van rossum created python in the late 1980s at centrum wiskunde & informatica",
+        "reasoning": "",
         "score": 1.0,
-        "latency_ms": 7295.485,
+        "latency_ms": 10158.6898,
         "prompt_tokens": 34,
-        "completion_tokens": 21
+        "completion_tokens": 26
       },
       {
         "test_case": {
@@ -349,32 +402,45 @@
         "prompt_id": "baseline",
         "model": "gemma3:4b",
         "output": "python, developed in 1991 by guido van rossum, is a versatile and popular high-level programming language",
+        "reasoning": "",
         "score": 1.0,
-        "latency_ms": 7026.1233,
+        "latency_ms": 7745.6251,
         "prompt_tokens": 54,
         "completion_tokens": 27
       }
     ]
   },
   {
+    "id": "c2b4460a-d3e1-46a7-9e80-6c5ba647b863",
+    "created_at": "2026-07-14T16:30:21.009658",
+    "started_at": "2026-07-14T21:58:44.878954",
+    "finished_at": "2026-07-14T22:00:20.950801",
+    "duration_seconds": 96.071847,
     "model": "Gemma 3",
-    "created_at": "2026-07-10T15:46:55.440877",
     "prompt": {
       "id": "concise",
       "name": "Concise",
-      "version": 2
+      "version": 2,
+      "author": "Yash",
+      "description": "Strict API-style prompt that minimizes verbosity.",
+      "tags": [
+        "concise",
+        "api",
+        "production"
+      ],
+      "created_at": "2026-07-14T16:08:33.260504"
     },
     "dataset": "qa",
     "metrics": {
-      "accuracy": 0.8333333333333334,
-      "passed": 5,
-      "failed": 1,
-      "avg_latency_ms": 13734.21585,
-      "min_latency_ms": 3880.6226,
-      "max_latency_ms": 61023.8114,
-      "avg_prompt_tokens": 37.333333333333336,
-      "avg_completion_tokens": 7.666666666666667,
-      "avg_total_tokens": 45.0
+      "accuracy": 1.0,
+      "passed": 6,
+      "failed": 0,
+      "avg_latency_ms": 11827.78925,
+      "min_latency_ms": 3012.7694,
+      "max_latency_ms": 51357.128,
+      "avg_prompt_tokens": 51.333333333333336,
+      "avg_completion_tokens": 6.833333333333333,
+      "avg_total_tokens": 58.166666666666664
     },
     "results": [
       {
@@ -387,11 +453,12 @@
         },
         "prompt_id": "concise",
         "model": "gemma3:4b",
-        "output": "four is the answer",
-        "score": 0.0,
-        "latency_ms": 61023.8114,
-        "prompt_tokens": 35,
-        "completion_tokens": 6
+        "output": "4",
+        "reasoning": "",
+        "score": 1.0,
+        "latency_ms": 51357.128,
+        "prompt_tokens": 49,
+        "completion_tokens": 3
       },
       {
         "test_case": {
@@ -403,11 +470,12 @@
         },
         "prompt_id": "concise",
         "model": "gemma3:4b",
-        "output": "paris is the capital",
+        "output": "paris",
+        "reasoning": "",
         "score": 1.0,
-        "latency_ms": 4503.4818,
-        "prompt_tokens": 32,
-        "completion_tokens": 6
+        "latency_ms": 3141.9413,
+        "prompt_tokens": 46,
+        "completion_tokens": 2
       },
       {
         "test_case": {
@@ -419,11 +487,12 @@
         },
         "prompt_id": "concise",
         "model": "gemma3:4b",
-        "output": "mars is the red planet",
+        "output": "mars",
+        "reasoning": "",
         "score": 1.0,
-        "latency_ms": 3983.5202,
-        "prompt_tokens": 37,
-        "completion_tokens": 7
+        "latency_ms": 3012.7694,
+        "prompt_tokens": 51,
+        "completion_tokens": 3
       },
       {
         "test_case": {
@@ -435,11 +504,12 @@
         },
         "prompt_id": "concise",
         "model": "gemma3:4b",
-        "output": "h2o, the simplest form",
+        "output": "h2o",
+        "reasoning": "",
         "score": 1.0,
-        "latency_ms": 3880.6226,
-        "prompt_tokens": 36,
-        "completion_tokens": 9
+        "latency_ms": 3167.4135,
+        "prompt_tokens": 50,
+        "completion_tokens": 5
       },
       {
         "test_case": {
@@ -451,11 +521,12 @@
         },
         "prompt_id": "concise",
         "model": "gemma3:4b",
-        "output": "guido van rossum developed python",
+        "output": "guido van rossum",
+        "reasoning": "",
         "score": 1.0,
-        "latency_ms": 4972.8615,
-        "prompt_tokens": 32,
-        "completion_tokens": 9
+        "latency_ms": 3765.9155,
+        "prompt_tokens": 46,
+        "completion_tokens": 6
       },
       {
         "test_case": {
@@ -467,11 +538,12 @@
         },
         "prompt_id": "concise",
         "model": "gemma3:4b",
-        "output": "python: versatile, modern programming language",
+        "output": "python is a high-level programming language created by guido van rossum in 1991",
+        "reasoning": "",
         "score": 1.0,
-        "latency_ms": 4040.9976,
-        "prompt_tokens": 52,
-        "completion_tokens": 9
+        "latency_ms": 6521.5678,
+        "prompt_tokens": 66,
+        "completion_tokens": 22
       }
     ]
   }

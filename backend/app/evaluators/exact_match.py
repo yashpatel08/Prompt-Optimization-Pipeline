@@ -10,4 +10,7 @@ class ExactMatchEvaluator(BaseEvaluator):
         output: str,
     ) -> float:
 
-        return 1.0 if test_case.reference == output else 0.0
+        reference = test_case.reference.strip().lower()
+        candidate = output.strip().lower()
+
+        return 1.0 if reference == candidate else 0.0

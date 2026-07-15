@@ -12,8 +12,15 @@ class ConsoleReporter:
 
         for experiment in experiments:
             print("=" * 60)
-            print(f"Model  : {experiment.model.name}")
-            print(f"Prompt: {experiment.prompt.name} (v{experiment.prompt.version})")
+            print(f"Experiment : {experiment.id}")
+            print(f"Started    : {experiment.started_at}")
+            print(f"Finished   : {experiment.finished_at}")
+            print(f"Duration   : {experiment.duration:.2f} s")
+            print(f"Model      : {experiment.model.name}")
+            print(f"Prompt     : {experiment.prompt.name} (v{experiment.prompt.version})")
+            print(f"Author     : {experiment.prompt.author}")
+            print(f"Tags       : {', '.join(experiment.prompt.tags)}")
+            print(f"Dataset    : {experiment.dataset.name}")
             print("=" * 60)
 
             print(f"Accuracy : {experiment.accuracy:.2%}")

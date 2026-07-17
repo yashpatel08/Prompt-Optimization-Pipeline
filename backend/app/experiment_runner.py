@@ -67,6 +67,7 @@ class ExperimentRunner:
                         latency_ms=response.total_duration / 1_000_000,
                         prompt_tokens=response.prompt_eval_count,
                         completion_tokens=response.eval_count,
+                        total_tokens=response.prompt_eval_count + response.eval_count,
                     )
 
                     # Store the result

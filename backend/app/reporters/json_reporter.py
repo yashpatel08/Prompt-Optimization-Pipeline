@@ -29,18 +29,24 @@ class JsonReporter:
                         else None
                     ),
                     "duration_seconds": experiment.duration,
-                    "model": experiment.model.name,
+                    "model": {
+                        "id": experiment.model.id,
+                        "name": experiment.model.name,
+                    },
                     "created_at": created_at,
                     "prompt": {
                         "id": experiment.prompt.id,
                         "name": experiment.prompt.name,
                         "version": experiment.prompt.version,
+                        "system_prompt": experiment.prompt.system_prompt,
                         "author": experiment.prompt.author,
                         "description": experiment.prompt.description,
                         "tags": experiment.prompt.tags,
                         "created_at": experiment.prompt.created_at.isoformat(),
                     },
-                    "dataset": experiment.dataset.name,
+                    "dataset": {
+                        "name": experiment.dataset.name,
+                    },
                     "metrics": {
                         "accuracy": experiment.accuracy,
                         "passed": experiment.passed,
@@ -69,6 +75,7 @@ class JsonReporter:
                             "latency_ms": result.latency_ms,
                             "prompt_tokens": result.prompt_tokens,
                             "completion_tokens": result.completion_tokens,
+                            "total_tokens": result.total_tokens,
                         }
                         for result in experiment.results
                     ],

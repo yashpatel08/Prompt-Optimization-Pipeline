@@ -14,6 +14,10 @@ from app.reporters.failure_reporter import FailureReporter
 from app.models.run import Run
 from app.storage.run_repository import RunRepository
 from app.run_manager import RunManager
+from app.history.run_history import RunHistory
+from app.reporters.history_reporter import HistoryReporter
+from app.comparators.run_comparator import RunComparator
+from app.reporters.run_comparison_reporter import RunComparisonReporter
 
 loader = DatasetLoader()
 
@@ -74,6 +78,21 @@ def main():
         failure_reports,
         run_manager.path("failures.json"),
     )
+    
+    history = RunHistory().load()
+    HistoryReporter().display(history)
+    
+    if len(history) >= 2:
+
+        previous = RunRepository().load(history[1].path)
+        latest = RunRepository().load(history[0].path)
+
+        comparison = RunComparator().compare(
+            previous,
+            latest,
+        )
+
+        RunComparisonReporter().display(comparison)
 
 
 if __name__ == "__main__":

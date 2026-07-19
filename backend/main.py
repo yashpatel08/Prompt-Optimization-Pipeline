@@ -18,6 +18,15 @@ from app.history.run_history import RunHistory
 from app.reporters.history_reporter import HistoryReporter
 from app.comparators.run_comparator import RunComparator
 from app.reporters.run_comparison_reporter import RunComparisonReporter
+from app.comparators.run_differ import RunDiffer
+from app.reporters.run_diff_reporter import RunDiffReporter
+from app.history.trend_history import TrendHistory
+from app.analyzers.trend_analyzer import TrendAnalyzer
+from app.reporters.trend_reporter import TrendReporter
+from app.analyzers.regression_detector import RegressionDetector
+from app.reporters.regression_reporter import RegressionReporter
+from app.analyzers.cost_analyzer import CostAnalyzer
+from app.reporters.cost_reporter import CostReporter
 
 loader = DatasetLoader()
 
@@ -70,18 +79,16 @@ def main():
     for experiment in experiments:
         report = FailureAnalyzer().analyze(experiment)
 
-        failure_reports.append(
-            (experiment, report)
-        )
+        failure_reports.append((experiment, report))
 
     FailureReporter().save(
         failure_reports,
         run_manager.path("failures.json"),
     )
-    
+
     history = RunHistory().load()
     HistoryReporter().display(history)
-    
+
     if len(history) >= 2:
 
         previous = RunRepository().load(history[1].path)
@@ -94,6 +101,37 @@ def main():
 
         RunComparisonReporter().display(comparison)
 
+    diff = RunDiffer().compare(
+        previous,
+        latest,
+    )
+
+    RunDiffReporter().display(diff)
+
+    runs, names = TrendHistory().load()
+
+    trends = TrendAnalyzer().analyze(
+        runs,
+        names,
+    )
+
+    TrendReporter().display(trends)
+
+    regressions = RegressionDetector().detect(
+        previous,
+        latest,
+    )
+
+    RegressionReporter().display(regressions)
+
+    costs = []
+
+    analyzer = CostAnalyzer()
+
+    for experiment in experiments:
+        costs.append(analyzer.analyze(experiment))
+
+    CostReporter().display(costs)
 
 if __name__ == "__main__":
     main()

@@ -56,21 +56,34 @@ class RunRepository:
 
         for e in data:
 
+            p = e["prompt"]
+
             prompt = Prompt(
-                id=e["prompt"]["id"],
-                name=e["prompt"]["name"],
-                version=e["prompt"]["version"],
-                system_prompt=e["prompt"].get("system_prompt", ""),
-                author=e["prompt"].get("author", ""),
-                description=e["prompt"].get("description", ""),
-                tags=e["prompt"].get("tags", []),
-                created_at=datetime.fromisoformat(e["prompt"]["created_at"]),
+                id=p["id"],
+                name=p["name"],
+                version=p["version"],
+                system_prompt=p.get("system_prompt", ""),
+                author=p.get("author", ""),
+                description=p.get("description", ""),
+                tags=p.get("tags", []),
+                created_at=datetime.fromisoformat(
+                    p.get("created_at", datetime.now().isoformat())
+                ),
             )
 
-            model = Model(
-                id=e["model"]["id"],
-                name=e["model"]["name"],
-            )
+            model_data = e["model"]
+
+            if isinstance(model_data, dict):
+                model = Model(
+                    id=model_data["id"],
+                    name=model_data["name"],
+                )
+            else:
+                # old report format
+                model = Model(
+                    id=model_data.lower().replace(" ", "_"),
+                    name=model_data,
+                )
 
             results = []
 
@@ -90,20 +103,30 @@ class RunRepository:
                 results.append(
                     EvaluationResult(
                         test_case=test_case,
-                        prompt_id=r["prompt_id"],
-                        model=r["model"],
+                        prompt_id=r.get("prompt_id", prompt.id),
+                        model=r.get("model", model.name),
                         output=r["output"],
                         reasoning=r.get("reasoning"),
                         score=r["score"],
                         latency_ms=r["latency_ms"],
-                        prompt_tokens=r["prompt_tokens"],
-                        completion_tokens=r["completion_tokens"],
-                        total_tokens=r["total_tokens"],
+                        prompt_tokens=r.get("prompt_tokens", 0),
+                        completion_tokens=r.get("completion_tokens", 0),
+                        total_tokens=r.get(
+                            "total_tokens",
+                            r.get("prompt_tokens", 0) + r.get("completion_tokens", 0),
+                        ),
                     )
                 )
 
+            dataset_data = e["dataset"]
+
+            if isinstance(dataset_data, dict):
+                dataset_name = dataset_data["name"]
+            else:
+                dataset_name = dataset_data
+
             dataset = Dataset(
-                name=e["dataset"]["name"],
+                name=dataset_name,
                 test_cases=[r.test_case for r in results],
             )
 

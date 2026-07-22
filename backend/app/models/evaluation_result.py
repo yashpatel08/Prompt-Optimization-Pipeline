@@ -16,3 +16,6 @@ class EvaluationResult:
     completion_tokens: int
     total_tokens: int
     reasoning: str | None = None
+    input_cost: float = 0.0
+    output_cost: float = 0.0
+    total_cost: float = 0.0

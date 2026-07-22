@@ -6,7 +6,7 @@ from app.models.dataset import Dataset
 from statistics import mean
 from datetime import datetime
 from uuid import uuid4
-
+from app.models.experiment_cost import ExperimentCost
 
 @dataclass
 class Experiment:
@@ -94,3 +94,41 @@ class Experiment:
             ).total_seconds()
 
         return 0.0
+    
+    @property
+    def cost(self) -> ExperimentCost:
+
+        return ExperimentCost(
+            model=self.model.name,
+            prompt=self.prompt.name,
+
+            prompt_tokens=sum(
+                result.prompt_tokens
+                for result in self.results
+            ),
+
+            completion_tokens=sum(
+                result.completion_tokens
+                for result in self.results
+            ),
+
+            total_tokens=sum(
+                result.total_tokens
+                for result in self.results
+            ),
+
+            input_cost=sum(
+                result.input_cost
+                for result in self.results
+            ),
+
+            output_cost=sum(
+                result.output_cost
+                for result in self.results
+            ),
+
+            total_cost=sum(
+                result.total_cost
+                for result in self.results
+            ),
+        )
